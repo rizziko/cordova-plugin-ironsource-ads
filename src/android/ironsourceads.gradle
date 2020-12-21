@@ -13,15 +13,15 @@ cdvPluginPostBuildExtras.add({
   }
 
   dependencies {
-    compile 'com.ironsource.sdk:mediationsdk:6.8.2@jar'
+    compile 'com.ironsource.sdk:mediationsdk:7.0.4.1'
     compile 'com.google.android.gms:play-services-ads:15.0.0'
     compile 'com.google.android.gms:play-services-location:15.0.0'
     
     // Uncomment required mediation adapters
 
     // compile 'com.ironsource.adapters:adcolonyadapter:4.0.0@jar'
-//     compile 'com.ironsource.adapters:admobadapter:4.3.2@jar'
-//     compile 'com.ironsource.adapters:facebookadapter:4.3.2@jar'
+    // compile 'com.ironsource.adapters:admobadapter:4.3.2@jar'
+    // compile 'com.ironsource.adapters:facebookadapter:4.3.2@jar'
     // compile 'com.ironsource.adapters:applovinadapter:4.0.0@jar'
     // compile 'com.ironsource.adapters:chartboostadapter:4.0.0@jar'
     // compile 'com.ironsource.adapters:hyprmxadapter:4.0.0@jar'
