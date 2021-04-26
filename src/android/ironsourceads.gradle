@@ -13,7 +13,7 @@ cdvPluginPostBuildExtras.add({
   }
 
   dependencies {
-    compile 'com.ironsource.sdk:mediationsdk:7.1.0.0'
+    compile 'com.ironsource.sdk:mediationsdk:7.1.5.0'
     compile 'com.google.android.gms:play-services-ads:15.0.0'
     compile 'com.google.android.gms:play-services-location:15.0.0'
     
