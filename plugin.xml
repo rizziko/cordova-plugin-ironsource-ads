@@ -21,10 +21,10 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest">
-        
+
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        
+
             <!-- ADD MEDIATION PERMISSIONS HERE -->
 
             <!--Requested by Applovin + HyperMX + Vungle -->
@@ -32,7 +32,7 @@
                 android:name="android.permission.WRITE_EXTERNAL_STORAGE"
                 android:maxSdkVersion="18"
             />
-            
+
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -191,16 +191,16 @@
 
             <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-            
+
         </config-file>
 
         <source-file src="src/android/IronSourceAdsPlugin.java"
             target-dir="src/com/charlesbodman/cordova/plugin/ironsource" />
         <framework src="src/android/ironsourceads.gradle" custom="true" type="gradleReference" />
-        
+
         <framework src="com.android.support:support-v4:+" />
         <framework src="com.android.support:recyclerview-v7:27.1.1" />
-        
+
     </platform>
 
     <platform name="ios">
@@ -211,14 +211,14 @@
         </config-file>
         <header-file src="src/ios/IronSourceAdsPlugin.h" />
         <source-file src="src/ios/IronSourceAdsPlugin.m" />
-        
-        <framework src="IronSourceSDK" type="podspec" spec="~> 7.1.5.0" />
-        
+
+        <framework src="IronSourceSDK" type="podspec" spec="~> 7.1.6.1" />
+
         <!-- ADD MEDIATION FRAMEWORKS HERE -->
 <!--        <framework src="IronSourceFacebookAdapter" type="podspec" spec="~> 4.3.3.0" />-->
 <!--        <framework src="IronSourceAdMobAdapter" type="podspec" spec="~> 4.3.1.0" />-->
 <!--        <framework src="IronSourceUnityAdsAdapter" type="podspec" spec="~> 4.1.2.2" />-->
-        
+
         <framework src="Foundation.framework" />
         <framework src="AVFoundation.framework" />
         <framework src="CoreMedia.framework" />
