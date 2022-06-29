@@ -578,7 +578,7 @@ public class IronSourceAdsPlugin extends CordovaPlugin
 
             public void run() {
 
-                if (mIronSourceBannerLayout != null && bannerLoaded && !bannerShowing) {
+                             if (mIronSourceBannerLayout != null && bannerLoaded && !bannerShowing) {
 
                     parentLayout = (ViewGroup) cordovaWebView.getView().getParent();
 
@@ -586,39 +586,41 @@ public class IronSourceAdsPlugin extends CordovaPlugin
 
                     ViewGroup wvParentView = (ViewGroup) view.getParent();
 
-                    LinearLayout parentView = new LinearLayout(cordovaWebView.getContext());
+                    RelativeLayout parentView = new RelativeLayout(cordovaWebView.getContext());
 
                     if (wvParentView != null && wvParentView != parentView) {
                         ViewGroup rootView = (ViewGroup) (view.getParent());
                         wvParentView.removeView(view);
-                        ((LinearLayout) parentView).setOrientation(LinearLayout.VERTICAL);
-                        parentView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT, 0.0F));
+                        RelativeLayout.LayoutParams parentLayoutParams = new RelativeLayout.LayoutParams(
+                        LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                        parentView.setLayoutParams(parentLayoutParams);
                         view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.MATCH_PARENT, 1.0F));
                         parentView.addView(view);
-                        rootView.addView(parentView);
+                        rootView.addView(parentView, parentLayoutParams);
                     }
 
-                    bannerContainerLayout = new RelativeLayout(self.cordova.getActivity());
+                  bannerContainerLayout = new RelativeLayout(self.cordova.getActivity());
 
-                    RelativeLayout.LayoutParams bannerContainerLayoutParams = new RelativeLayout.LayoutParams(
-                            LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                  RelativeLayout.LayoutParams bannerContainerLayoutParams = new RelativeLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                  bannerContainerLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+                  bannerContainerLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                  bannerContainerLayout.setLayoutParams(bannerContainerLayoutParams);
+                  bannerContainerLayout.setGravity(Gravity.BOTTOM);
 
-                    bannerContainerLayout.setGravity(Gravity.BOTTOM);
+                  RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                            RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                  layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
-                    layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                  bannerContainerLayout.addView(mIronSourceBannerLayout, layoutParams);
 
-                    bannerContainerLayout.addView(mIronSourceBannerLayout, layoutParams);
+                  mIronSourceBannerLayout.setLayoutParams(layoutParams);
 
-                    mIronSourceBannerLayout.setLayoutParams(layoutParams);
+                  parentView.addView(bannerContainerLayout, bannerContainerLayoutParams);
 
-                    parentView.addView(bannerContainerLayout);
-                    
-                    bannerShowing = true;
+                  bannerShowing = true;
                 }
 
                 callbackContext.success();
