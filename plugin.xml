@@ -215,9 +215,10 @@
         <framework src="IronSourceSDK" type="podspec" spec="~> 7.2.2.1" />
 
         <!-- ADD MEDIATION FRAMEWORKS HERE -->
-        <framework src="IronSourceFacebookAdapter" type="podspec" spec="~> 4.3.36.0" />
-        <framework src="IronSourceAdMobAdapter" type="podspec" spec="~> 4.3.32.1" />
-<!--        <framework src="IronSourceUnityAdsAdapter" type="podspec" spec="~> 4.1.2.2" />-->
+        <framework src="IronSourceAdColonyAdapter" type="podspec" spec="~> 4.3.14.1" />
+        <framework src="IronSourceAdMobAdapter" type="podspec" spec="~> 4.3.32.2" />
+        <framework src="IronSourceFacebookAdapter" type="podspec" spec="~> 4.3.36.1" />
+        <framework src="IronSourceUnityAdsAdapter" type="podspec" spec="~> 4.3.22.2" />
 
         <framework src="Foundation.framework" />
         <framework src="AVFoundation.framework" />
