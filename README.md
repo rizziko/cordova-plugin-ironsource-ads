@@ -1,4 +1,5 @@
 # IronSource Ads Cordova Plugin
+
 # <img src="https://github.com/charlesbodman/cordova-plugin-ironsource-ads/blob/master/images/ironsource_logo.png?raw=true" width="500"  />
 
 <p align="left">
@@ -6,7 +7,7 @@
 <img src="https://img.shields.io/badge/IronSource%20Framework%20Version-6.8.2-blue.svg?style=flat-square">
 </p>
 
---------
+---
 
 ## Table of Contents
 
@@ -15,22 +16,16 @@
 - [Usage](#usage)
 - [Official IronSource Documentation](http://developers.ironsrc.com/)
 
-
-## State of Development
-- [x] <img src="https://img.shields.io/badge/-Complete-brightgreen.svg?label=Rewarded%20Video%20Support&style=flat-square">
-- [x] <img src="https://img.shields.io/badge/-Complete-brightgreen.svg?label=Offerwall%20Support&style=flat-square">
-- [x] <img src="https://img.shields.io/badge/-Complete-brightgreen.svg?label=Interstitial%20Support&style=flat-square">
-- [ ] <img src="https://img.shields.io/badge/-In%20Development-yellow.svg?label=Banner%20Support&style=flat-square">
-
--------- 
+---
 
 ## Install
 
 ```bash
-cordova plugin add cordova-plugin-ironsource-ads
+cordova plugin add https://github.com/ciaoben/cordova-plugin-ironsource-ads
 ```
 
--------- 
+---
+
 ## Usage
 
 - [Initialization](#initialization)
@@ -49,171 +44,182 @@ cordova plugin add cordova-plugin-ironsource-ads
   - [Has Offerwall](#has-offerwall)
   - [Show Offerwall](#show-offerwall)
   - [Offerwall Events](#offerwall-events)
-  
-  
+
 All methods support optional `onSuccess` and `onFailure` parameters
 
 ### Initialization
+
 ```javascript
 IronSourceAds.init({
-    appKey: appKey
+  appKey: appKey,
 });
 ```
 
 ### Validate Integration
+
 Once you have finished your integration, call the following function and confirm that everything in your integration is marked as **VERIFIED**:
 
 ```javascript
 IronSourceAds.validateIntegration();
 ```
 
-
 **Check xcode / android studio debugger for validation output**
 <img src="https://github.com/charlesbodman/cordova-plugin-ironsource-ads/blob/master/images/integration_helper.png"/>
 
-***
+---
+
 ### Set Dynamic User ID
+
 > The Dynamic UserID is a parameter that can be changed throughout the session and will be received in the server-to-server ad > rewarded callbacks. This parameter helps verify AdRewarded transactions and must be set before calling ShowRV.
+
 ```javascript
-IronSourceAds.setDynamicUserId({userId:'example'});
+IronSourceAds.setDynamicUserId({ userId: "example" });
 ```
-***
+
+---
+
 ### Rewarded Videos
 
 #### Has Rewarded Video
 
 ```javascript
 IronSourceAds.hasRewardedVideo({
-    onSuccess: function (available) {
-
-    }
+  onSuccess: function (available) {},
 });
 ```
 
 #### Show Rewarded Video
+
 ```javascript
 IronSourceAds.showRewardedVideo();
 ```
 
 #### Rewarded Video Events
 
-
 **Rewarded Video Availabilty Changed**
-```javascript
-window.addEventListener("rewardedVideoAvailabilityChanged", function(event){
 
-    var available = event.available;
-    
+```javascript
+window.addEventListener("rewardedVideoAvailabilityChanged", function (event) {
+  var available = event.available;
 });
 ```
+
 **Rewarded Video Rewarded**
-```javascript
-window.addEventListener("rewardedVideoRewardReceived", function(event){
 
-    var placement = event.placement;
-    var placementName = placement.placementName;
-    var rewardAmount = placement.rewardAmount;
-    var rewardName = placement.rewardName;
-    
+```javascript
+window.addEventListener("rewardedVideoRewardReceived", function (event) {
+  var placement = event.placement;
+  var placementName = placement.placementName;
+  var rewardAmount = placement.rewardAmount;
+  var rewardName = placement.rewardName;
 });
 ```
+
 **Rewarded Video Started**
-```javascript
-window.addEventListener("rewardedVideoStarted", function(){
 
-});
+```javascript
+window.addEventListener("rewardedVideoStarted", function () {});
 ```
+
 **Rewarded Video Ended**
-```javascript
-window.addEventListener("rewardedVideoEnded", function(){
 
-});
+```javascript
+window.addEventListener("rewardedVideoEnded", function () {});
 ```
+
 **Rewarded Video Opened**
-```javascript
-window.addEventListener("rewardedVideoOpened", function(){
 
-});
+```javascript
+window.addEventListener("rewardedVideoOpened", function () {});
 ```
+
 **Rewarded Video Closed**
-```javascript
-window.addEventListener("rewardedVideoClosed", function(){
 
-});
+```javascript
+window.addEventListener("rewardedVideoClosed", function () {});
 ```
+
 **Rewarded Video Failed**
-```javascript
-window.addEventListener("rewardedVideoFailed", function(){
 
-});
+```javascript
+window.addEventListener("rewardedVideoFailed", function () {});
 ```
-***
+
+---
+
 ### Interstitial
 
 #### Has Interstitial
+
 ```javascript
 IronSourceAds.hasInterstitial({
-    onSuccess: function (available) {
-
-    }
+  onSuccess: function (available) {},
 });
 ```
+
 #### Load Interstitial
-_Must be called before `showInterstitial`
+
+\_Must be called before `showInterstitial`
+
 ```javascript
 IronSourceAds.loadInterstitial();
 ```
-***
+
+---
+
 #### Show Interstitial
+
 ```javascript
 IronSourceAds.showInterstitial();
 ```
-***
+
+---
+
 #### Interstitial Events
 
 **Interstitial Loaded**
-```javascript
-window.addEventListener("interstitialLoaded", function(){
 
-});
+```javascript
+window.addEventListener("interstitialLoaded", function () {});
 ```
+
 **Interstitial Shown**
-```javascript
-window.addEventListener("interstitialShown", function(){
 
-});
+```javascript
+window.addEventListener("interstitialShown", function () {});
 ```
+
 **Interstitial Show Failed**
-```javascript
-window.addEventListener("interstitialShowFailed", function(){
 
-});
+```javascript
+window.addEventListener("interstitialShowFailed", function () {});
 ```
+
 **Interstitial Clicked**
-```javascript
-window.addEventListener("interstitialClicked", function(){
 
-});
+```javascript
+window.addEventListener("interstitialClicked", function () {});
 ```
+
 **Interstitial Closed**
-```javascript
-window.addEventListener("interstitialClosed", function(){
 
-});
+```javascript
+window.addEventListener("interstitialClosed", function () {});
 ```
+
 **Interstitial Will Open**
-```javascript
-window.addEventListener("interstitialClosed", function(){
 
-});
+```javascript
+window.addEventListener("interstitialClosed", function () {});
 ```
+
 **Interstitial Failed To Load**
-```javascript
-window.addEventListener("interstitialFailedToLoad", function(){
 
-});
+```javascript
+window.addEventListener("interstitialFailedToLoad", function () {});
 ```
-***
+
+---
 
 ### Offerwalls
 
@@ -221,13 +227,12 @@ window.addEventListener("interstitialFailedToLoad", function(){
 
 ```javascript
 IronSourceAds.hasOfferwall({
-    onSuccess: function (available) {
-
-    }
+  onSuccess: function (available) {},
 });
 ```
 
 #### Show Offerwall
+
 ```javascript
 IronSourceAds.showOfferwall();
 ```
@@ -235,47 +240,48 @@ IronSourceAds.showOfferwall();
 #### Offerwall Events
 
 **Offerwall Availability Changed**
+
 ```javascript
-window.addEventListener("offerwallAvailabilityChanged", function(event){
+window.addEventListener("offerwallAvailabilityChanged", function (event) {
   var available = event.available;
 });
 ```
 
 **Offerwall Shown**
-```javascript
-window.addEventListener("offerwallShown", function(){
 
-});
-```
-**Offerwall Credit Recieved**
 ```javascript
-window.addEventListener("offerwallCreditReceived", function(event){
-  
+window.addEventListener("offerwallShown", function () {});
+```
+
+**Offerwall Credit Recieved**
+
+```javascript
+window.addEventListener("offerwallCreditReceived", function (event) {
   var credits = event.credits; // The number of credits the user has earned since //the last (void)didReceiveOfferwallCredits:
   var totalCredits = event.totalCredits; //The total number of credits ever earned by the user
-  
 });
 ```
+
 **Offerwall Credit Failed**
-```javascript
-window.addEventListener("offerwallCreditFailed", function(){
 
-});
+```javascript
+window.addEventListener("offerwallCreditFailed", function () {});
 ```
+
 **Offerwall Closed**
-```javascript
-window.addEventListener("offerwallClosed", function(){
 
-});
+```javascript
+window.addEventListener("offerwallClosed", function () {});
 ```
-**Offerwall Show Failed**
-```javascript
-window.addEventListener("offerwallShowFailed", function(){
 
-});
+**Offerwall Show Failed**
+
+```javascript
+window.addEventListener("offerwallShowFailed", function () {});
 ```
 
 # Adding Additional SDKS
+
 **By default, this plugin does not contain other ad providers sdks**
 
 ### Android
@@ -284,7 +290,8 @@ window.addEventListener("offerwallShowFailed", function(){
 
 Edit `src/android/ironsourceads.gradle` from this plugin and add the mediation adapters you need
 
-*Example*
+_Example_
+
 ```java
 cdvPluginPostBuildExtras.add({
 
@@ -313,10 +320,11 @@ cdvPluginPostBuildExtras.add({
 ```
 
 ### IOS
+
 **IOS requires manual downloading of Adapter & SDK**
 [Download Adapters Here and follow the integration guides](http://developers.ironsrc.com/ironsource-mobile/ios/ios-sdk/#step-2)
 
-*If you have any questions, create an issue, and I'll walk you through it. *
+_If you have any questions, create an issue, and I'll walk you through it. _
 
 **Edit `plugin.xml` of this plugin**
 
