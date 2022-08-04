@@ -212,13 +212,13 @@
         <header-file src="src/ios/IronSourceAdsPlugin.h" />
         <source-file src="src/ios/IronSourceAdsPlugin.m" />
 
-        <framework src="IronSourceSDK" type="podspec" spec="~> 7.2.3.0" />
+        <framework src="IronSourceSDK" type="podspec" spec="~> 7.2.3.1" />
 
         <!-- ADD MEDIATION FRAMEWORKS HERE -->
-        <framework src="IronSourceAdColonyAdapter" type="podspec" spec="~> 4.3.14.1" />
-        <framework src="IronSourceAdMobAdapter" type="podspec" spec="~> 4.3.32.2" />
-        <framework src="IronSourceFacebookAdapter" type="podspec" spec="~> 4.3.36.1" />
-        <framework src="IronSourceUnityAdsAdapter" type="podspec" spec="~> 4.3.22.2" />
+        <framework src="IronSourceAdColonyAdapter" type="podspec" spec="~> 4.3.14.2" />
+        <framework src="IronSourceAdMobAdapter" type="podspec" spec="~> 4.3.33.0" />
+        <framework src="IronSourceFacebookAdapter" type="podspec" spec="~> 4.3.36.2" />
+        <framework src="IronSourceUnityAdsAdapter" type="podspec" spec="~> 4.3.22.3" />
 
         <framework src="Foundation.framework" />
         <framework src="AVFoundation.framework" />
