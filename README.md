@@ -21,7 +21,8 @@
 ## Install
 
 ```bash
-cordova plugin add https://github.com/ciaoben/cordova-plugin-ironsource-ads
+npm install --save https://github.com/rizziko/cordova-plugin-ironsource-ads
+npx cap sync
 ```
 
 ---
