@@ -46,18 +46,24 @@ var IronSourceAds = (function () {
             throw new Error("IronSourceAds::init - appKey is required");
          }
 
-         callPlugin(
-            "init",
-            [params.appKey, params.userId],
-            function () {
-               initialized = true;
+        return new Promise((resolve, reject) => {
+            callPlugin('init', [params.appKey, params.userId], function () {
 
-               if (isFunction(params.onSuccess)) {
-                  params.onSuccess();
-               }
-            },
-            params.onFailure
-         );
+                initialized = true;
+
+                if (isFunction(params.onSuccess)) {
+                    params.onSuccess();
+                }
+                resolve(true);
+
+            }, () => {
+                if (isFunction(params.onFailure)) {
+                    params.onFailure()
+                }
+
+                reject("Failed to initialize ironsource");
+            });
+        });
       },
 
       /**
