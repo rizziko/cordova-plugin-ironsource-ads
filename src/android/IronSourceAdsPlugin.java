@@ -83,74 +83,46 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         if (action.equals("init")) {
             this.initAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("setDynamicUserId")) {
+        } else if (action.equals("setDynamicUserId")) {
             this.setDynamicUserIdAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("setConsent")) {
+        } else if (action.equals("setConsent")) {
             this.setConsentAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("validateIntegration")) {
+        } else if (action.equals("validateIntegration")) {
             this.validateIntegrationAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("showRewardedVideo")) {
+        } else if (action.equals("showRewardedVideo")) {
             this.showRewardedVideoAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("hasRewardedVideo")) {
+        } else if (action.equals("hasRewardedVideo")) {
             this.hasRewardedVideoAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("isRewardedVideoCappedForPlacement")) {
+        } else if (action.equals("isRewardedVideoCappedForPlacement")) {
             this.isRewardedVideoCappedForPlacementAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("loadBanner")) {
+        } else if (action.equals("loadBanner")) {
             this.loadBannerAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("showBanner")) {
+        } else if (action.equals("showBanner")) {
             this.showBannerAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("hideBanner")) {
+        } else if (action.equals("hideBanner")) {
             this.hideBannerAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("hasOfferwall")) {
+        } else if (action.equals("hasOfferwall")) {
             this.hasOfferwallAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("showOfferwall")) {
+        } else if (action.equals("showOfferwall")) {
             this.showOfferwallAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("loadInterstitial")) {
+        } else if (action.equals("loadInterstitial")) {
             this.loadInterstitialAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("hasInterstitial")) {
+        } else if (action.equals("hasInterstitial")) {
             this.hasInterstitialAction(args, callbackContext);
             return true;
-        }
-
-        else if (action.equals("showInterstitial")) {
+        } else if (action.equals("showInterstitial")) {
             this.showInterstitialAction(args, callbackContext);
             return true;
         }
@@ -158,7 +130,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         return false;
     }
 
-    /** --------------------------------------------------------------- */
+    /**
+     * ---------------------------------------------------------------
+     */
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         cordovaWebView = webView;
@@ -179,7 +153,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         IronSource.onResume(this.cordova.getActivity());
     }
 
-    /** ----------------------- UTILS --------------------------- */
+    /**
+     * ----------------------- UTILS ---------------------------
+     */
 
     private JSONObject createErrorJSON(IronSourceError ironSourceError) {
 
@@ -286,7 +262,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         IronSource.init(this.cordova.getActivity(), appKey);
     }
 
-    /** ----------------------- SET DYNAMIC USER ID --------------------------- */
+    /**
+     * ----------------------- SET DYNAMIC USER ID ---------------------------
+     */
 
     private void setDynamicUserIdAction(JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
@@ -300,7 +278,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         });
     }
 
-    /** ----------------------- SET CONSENT --------------------------- */
+    /**
+     * ----------------------- SET CONSENT ---------------------------
+     */
 
     private void setConsentAction(JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
@@ -331,14 +311,21 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         });
     }
 
-    /** ----------------------- REWARDED VIDEO --------------------------- */
+    /**
+     * ----------------------- REWARDED VIDEO ---------------------------
+     */
 
     private void showRewardedVideoAction(JSONArray args, final CallbackContext callbackContext) throws JSONException {
         cordova.getActivity().runOnUiThread(new Runnable() {
             public void run() {
-
-                IronSource.showRewardedVideo();
-                callbackContext.success();
+                try {
+                    final String placementId = args.getString(0);
+                    IronSource.showRewardedVideo(placementId);
+                    callbackContext.success();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
             }
         });
     }
@@ -432,7 +419,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         this.emitWindowEvent(EVENT_REWARDED_VIDEO_CLICKED);
     }
 
-    /** ----------------------- INTERSTITIAL --------------------------- */
+    /**
+     * ----------------------- INTERSTITIAL ---------------------------
+     */
 
     private void hasInterstitialAction(JSONArray args, final CallbackContext callbackContext) {
         cordova.getActivity().runOnUiThread(new Runnable() {
@@ -455,8 +444,14 @@ public class IronSourceAdsPlugin extends CordovaPlugin
     private void showInterstitialAction(JSONArray args, final CallbackContext callbackContext) throws JSONException {
         cordova.getActivity().runOnUiThread(new Runnable() {
             public void run() {
-                IronSource.showInterstitial();
-                callbackContext.success();
+                try {
+                    final String placementId = args.getString(0);
+                    IronSource.showInterstitial(placementId);
+                    callbackContext.success();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
             }
         });
     }
@@ -496,7 +491,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         this.emitWindowEvent(EVENT_INTERSTITIAL_CLICKED, new JSONObject());
     }
 
-    /** ----------------------- OFFERWALL --------------------------- */
+    /**
+     * ----------------------- OFFERWALL ---------------------------
+     */
 
     private void showOfferwallAction(JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
@@ -569,7 +566,9 @@ public class IronSourceAdsPlugin extends CordovaPlugin
         this.emitWindowEvent(EVENT_OFFERWALL_CLOSED);
     }
 
-    /** ----------------------- BANNER --------------------------- */
+    /**
+     * ----------------------- BANNER ---------------------------
+     */
     private void showBannerAction(JSONArray args, final CallbackContext callbackContext) {
 
         final IronSourceAdsPlugin self = this;
@@ -578,7 +577,7 @@ public class IronSourceAdsPlugin extends CordovaPlugin
 
             public void run() {
 
-                             if (mIronSourceBannerLayout != null && bannerLoaded && !bannerShowing) {
+                if (mIronSourceBannerLayout != null && bannerLoaded && !bannerShowing) {
 
                     parentLayout = (ViewGroup) cordovaWebView.getView().getParent();
 
@@ -592,7 +591,7 @@ public class IronSourceAdsPlugin extends CordovaPlugin
                         ViewGroup rootView = (ViewGroup) (view.getParent());
                         wvParentView.removeView(view);
                         RelativeLayout.LayoutParams parentLayoutParams = new RelativeLayout.LayoutParams(
-                        LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
                         parentView.setLayoutParams(parentLayoutParams);
                         view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.MATCH_PARENT, 1.0F));
@@ -600,27 +599,27 @@ public class IronSourceAdsPlugin extends CordovaPlugin
                         rootView.addView(parentView, parentLayoutParams);
                     }
 
-                  bannerContainerLayout = new RelativeLayout(self.cordova.getActivity());
+                    bannerContainerLayout = new RelativeLayout(self.cordova.getActivity());
 
-                  RelativeLayout.LayoutParams bannerContainerLayoutParams = new RelativeLayout.LayoutParams(
-                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                  bannerContainerLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-                  bannerContainerLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-                  bannerContainerLayout.setLayoutParams(bannerContainerLayoutParams);
-                  bannerContainerLayout.setGravity(Gravity.BOTTOM);
+                    RelativeLayout.LayoutParams bannerContainerLayoutParams = new RelativeLayout.LayoutParams(
+                            LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                    bannerContainerLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+                    bannerContainerLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                    bannerContainerLayout.setLayoutParams(bannerContainerLayoutParams);
+                    bannerContainerLayout.setGravity(Gravity.BOTTOM);
 
-                  RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-                  layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                    layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
-                  bannerContainerLayout.addView(mIronSourceBannerLayout, layoutParams);
+                    bannerContainerLayout.addView(mIronSourceBannerLayout, layoutParams);
 
-                  mIronSourceBannerLayout.setLayoutParams(layoutParams);
+                    mIronSourceBannerLayout.setLayoutParams(layoutParams);
 
-                  parentView.addView(bannerContainerLayout, bannerContainerLayoutParams);
+                    parentView.addView(bannerContainerLayout, bannerContainerLayoutParams);
 
-                  bannerShowing = true;
+                    bannerShowing = true;
                 }
 
                 callbackContext.success();
@@ -742,6 +741,6 @@ public class IronSourceAdsPlugin extends CordovaPlugin
                 callbackContext.success();
             }
         });
-    };
+    }
 
 }

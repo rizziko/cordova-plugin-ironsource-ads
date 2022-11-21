@@ -73,9 +73,9 @@ var IronSourceAds = (function () {
 		 * @param {Function} param.onFailure - optional on failure callback
 		 */
 		showRewardedVideo: function showRewardedVideo(params) {
-			params = defaults(params, {placement: 'default'});
+			params = defaults(params, {placement: 'DefaultRewardedVideo'});
 
-			callPlugin('showRewardedVideo', [], params.onSuccess, params.onFailure);
+			callPlugin('showRewardedVideo', [params.placement], params.onSuccess, params.onFailure);
 		},
 
 		/**
@@ -154,9 +154,9 @@ var IronSourceAds = (function () {
 		 * Show interstitial
 		 */
 		showInterstitial: function showInterstitial(params) {
-			params = defaults(params, {});
+			params = defaults(params, {placement: 'DefaultInterstitial'});
 
-			callPlugin('showInterstitial', [], params.onSuccess, params.onFailure);
+			callPlugin('showInterstitial', [params.placement], params.onSuccess, params.onFailure);
 		},
 
 		/**
