@@ -1,11 +1,11 @@
 {
   "name": "cordova-plugin-ironsource-ads",
   "main": "./www/ironsourceads.js",
-  "version": "0.0.1",
-  "description": "Ironsource ads for cordova based development used for Blooza",
+  "version": "0.0.2",
+  "description": "Ironsource ads for cordova based development used for Capactior",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ciaoben/cordova-plugin-ironsource-ads.git"
+    "url": "https://github.com/rizziko/cordova-plugin-ironsource-ads.git"
   },
   "keywords": [
     "cordova",
@@ -13,10 +13,10 @@
     "cordova-android",
     "cordova-ios"
   ],
-  "author": "Nicolò Benigni",
+  "author": "stevium",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ciaoben/cordova-plugin-ironsource-ads/issues"
+    "url": "https://github.com/rizziko/cordova-plugin-ironsource-ads/issues"
   },
-  "homepage": "https://github.com/ciaoben/cordova-plugin-ironsource-ads"
+  "homepage": "https://github.com/rizziko/cordova-plugin-ironsource-ads"
 }
