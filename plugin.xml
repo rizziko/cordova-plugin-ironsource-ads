@@ -212,7 +212,7 @@
         <header-file src="src/ios/IronSourceAdsPlugin.h" />
         <source-file src="src/ios/IronSourceAdsPlugin.m" />
 
-        <framework src="IronSourceSDK" type="podspec" spec="~> 7.2.3.1" />
+        <framework src="IronSourceSDK" type="podspec" spec="~> 7.2.5.1" />
 
         <!-- ADD MEDIATION FRAMEWORKS HERE -->
         <framework src="IronSourceAdColonyAdapter" type="podspec" spec="~> 4.3.15.2" />
